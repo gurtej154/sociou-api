@@ -27,7 +27,7 @@ const thoughtsController = {
 
   // Get all available Thoughts
   getAllThoughts(req, res) {
-    Thoughts.find({})
+    Thoughts.find()
       .populate({ path: "reactions", select: "-__v" })
       .select("-__v")
       // .sort({_id: -1})
