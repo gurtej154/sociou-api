@@ -1,60 +1,33 @@
-// Require Mongoos and Moment
-const { Schema, model, Types } = require("mongoose");
-const moment = require("moment");
+// Require Mongoose
+const { Schema, model } = require("mongoose");
 
-// ReactionsSchema
-const ReactionsSchema = new Schema(
+const UsersSchema = new Schema(
   {
-    // Set custom ID
-    reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
-    reactionBody: {
-      type: String,
-      required: true,
-      maxlength: 280,
-    },
     username: {
       type: String,
+      unique: true,
       required: true,
+      trim: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) =>
-        moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
-);
-
-// ThoughtsSchema
-const ThoughtsSchema = new Schema(
-  {
-    thoughtText: {
+    email: {
       type: String,
       required: true,
-      minlength: 1,
-      maxlength: 280,
+      unique: true,
+      // use REGEX to validate correct email
+      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      // Moment
-      get: (createdAtVal) =>
-        moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    // Use ReactionsSchema to validate data
-    reactions: [ReactionsSchema],
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thoughts",
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
   },
   {
     toJSON: {
@@ -65,13 +38,13 @@ const ThoughtsSchema = new Schema(
   }
 );
 
-// get total count of reactions
-ThoughtsSchema.virtual("reactionCount").get(function () {
-  return this.reactions.length;
+// get total count of friends
+UsersSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
 });
 
-// create the Thoughts model using the Thoughts Schema
-const Thoughts = model("Thoughts", ThoughtsSchema);
+// create the Users model using the Users Schema
+const Users = model("Users", UsersSchema);
 
-// Export Thoughts Module
-module.exports = Thoughts;
+// Export Users module
+module.exports = Users;
