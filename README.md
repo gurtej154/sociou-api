@@ -1,36 +1,80 @@
-# 18 NoSQL: Social Network API
+<div id="top"></div>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-## Your Task
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-MongoDB is a popular choice for many social networks due to its speed with large amounts of data and flexibility with unstructured data. Over the last part of this course, you’ll use several of the technologies that social networking platforms use in their full-stack applications. Because the foundation of these applications is data, it’s important that you understand how to build and structure the API first.
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-Your homework is to build an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. You’ll use Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the [Express.js](https://www.npmjs.com/package/express) and [Mongoose](https://www.npmjs.com/package/mongoose) packages, you may also optionally use a JavaScript date library of your choice or the native JavaScript `Date` object to format timestamps.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/gurtej154/Web-Developer-Portfolio">
+    <img src="/assets/README-Logo.gif" alt="Logo" width="100" height="100">
+  </a>
 
-No seed data is provided, so you’ll need to create your own data using Insomnia after you’ve created your API.
+<h3 align="center">Web Developer Portfolio</h3>
 
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
+  <p align="center">
+    Showcases the authors completed projects, experiences, skills and contact details.
+    <br />
+    <a href="https://github.com/gurtej154/Web-Developer-Portfolio"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://gurtej-singh-web-portfolio.herokuapp.com/">View Demo</a>
+    ·
+    <a href="https://github.com/gurtej154/Web-Developer-Portfolio/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/gurtej154/Web-Developer-Portfolio/issues">Request Feature</a>
+  </p>
+</div>
 
-## User Story
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-```md
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
-```
+<!-- ABOUT THE PROJECT -->
 
-## Acceptance Criteria
-
-```md
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-```
+## About The Project
 
 ## Mock Up
 
@@ -56,215 +100,128 @@ The following animation shows the POST and DELETE routes for a user’s friend l
 
 In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Built With
+
+- [Express](https://expressjs.com/)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose ](https://www.mongodb.com/)
+- [Insomina](https://insomnia.rest/)
+- [Node](https://nodejs.org/en/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
 ## Getting Started
 
-Be sure to have MongoDB installed on your machine. Follow the [MongoDB installation guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb) to install MongoDB locally.
+Clone the repository and install the npm packages
 
-Use the following guidelines to set up your models and API routes:
+### Prerequisites
 
-### Models
+None at this stage
 
-**User**:
+### Installation
 
-* `username`
-  * String
-  * Unique
-  * Required
-  * Trimmed
+1. Clone the repo
 
-* `email`
-  * String
-  * Required
-  * Unique
-  * Must match a valid email address (look into Mongoose's matching validation)
+   ```sh
+   git clone https://github.com/gurtej154/sociou-api.git
+   ```
 
-* `thoughts`
-  * Array of `_id` values referencing the `Thought` model
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-* `friends`
-  * Array of `_id` values referencing the `User` model (self-reference)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**Schema Settings**:
+<!-- USAGE EXAMPLES -->
 
-Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
+## Usage
 
----
+To ulitise this application, the following need to be installed and implemented in the command line.
 
-**Thought**:
+- Npm init - for node packages
+- Npm install - for multiple packages
+- Npm install inquirer - answer questions and submit the anwswers to the database
+- Npm dotenv - protect private or personal credentials from being made public within the repository
+- Npm figlet - creates unique and interesting headings
+- Npm mysql2 - enhances the existing mysql system
+- Npm i - installs all the packages within the cloned repository
 
-* `thoughtText`
-  * String
-  * Required
-  * Must be between 1 and 280 characters
+Type (npm start) to gain access to the employee management system within the terminal.
 
-* `createdAt`
-  * Date
-  * Set default value to the current timestamp
-  * Use a getter method to format the timestamp on query
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-* `username` (The user that created this thought)
-  * String
-  * Required
+<!-- ROADMAP -->
 
-* `reactions` (These are like replies)
-  * Array of nested documents created with the `reactionSchema`
+## Roadmap
 
-**Schema Settings**:
+- Constantly updating to current standards
 
-Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
+See the [open issues](https://github.com/gurtej154/sociou-api/issues) for a full list of proposed features (and known issues).
 
----
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**Reaction** (SCHEMA ONLY)
+<!-- CONTRIBUTING -->
 
-* `reactionId`
-  * Use Mongoose's ObjectId data type
-  * Default value is set to a new ObjectId
+## Contributing
 
-* `reactionBody`
-  * String
-  * Required
-  * 280 character maximum
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-* `username`
-  * String
-  * Required
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-* `createdAt`
-  * Date
-  * Set default value to the current timestamp
-  * Use a getter method to format the timestamp on query
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-**Schema Settings**:
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This will not be a model, but rather will be used as the `reaction` field's subdocument schema in the `Thought` model.
+<!-- LICENSE -->
 
-### API Routes
+## License
 
-**`/api/users`**
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-* `GET` all users
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-* `GET` a single user by its `_id` and populated thought and friend data
+<!-- CONTACT -->
 
-* `POST` a new user:
+## Contact
 
-```json
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
-```
+Gurtej Singh - [gurtej154](gurtej154@gmail.com)
 
-* `PUT` to update a user by its `_id`
+Project Link: [Repository](https://github.com/gurtej154/sociou-api.git)
 
-* `DELETE` to remove user by its `_id`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**BONUS**: Remove a user's associated thoughts when deleted.
+<!-- ACKNOWLEDGMENTS -->
 
----
+## Acknowledgments
 
-**`/api/users/:userId/friends/:friendId`**
+- N/A
 
-* `POST` to add a new friend to a user's friend list
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-* `DELETE` to remove a friend from a user's friend list
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
----
-
-**`/api/thoughts`**
-
-* `GET` to get all thoughts
-
-* `GET` to get a single thought by its `_id`
-
-* `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
-
-```json
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-```
-
-* `PUT` to update a thought by its `_id`
-
-* `DELETE` to remove a thought by its `_id`
-
----
-
-**`/api/thoughts/:thoughtId/reactions`**
-
-* `POST` to create a reaction stored in a single thought's `reactions` array field
-
-* `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
-
-## Grading Requirements
-
-This homework is graded based on the following criteria:
-
-### Deliverables: 10%
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 37%
-
-* A walkthrough video that demonstrates the functionality of the social media API must be submitted, and a link to the video should be included in your README file.
-
-  * The walkthrough video must show all of the technical acceptance criteria being met.
-
-  * The walkthrough video must demonstrate how to start the application’s server.
-
-  * The walkthrough video must demonstrate GET routes for all users and all thoughts being tested in Insomnia.
-
-  * The walkthrough video must demonstrate GET routes for a single user and a single thought being tested in Insomnia.
-
-  * The walkthrough video must demonstrate POST, PUT, and DELETE routes for users and thoughts being tested in Insomnia.
-
-  * Walkthrough video must demonstrate POST and DELETE routes for a user’s friend list being tested in Insomnia.
-
-  * Walkthrough video must demonstrate POST and DELETE routes for reactions to thoughts being tested in Insomnia.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Uses the [Mongoose package](https://www.npmjs.com/package/mongoose) to connect to a MongoDB database.
-
-  * Includes User and Thought models outlined in the homework instructions.
-
-  * Includes schema settings for User and Thought models as outlined in the homework instructions.
-
-  * Includes Reactions as the `reaction` field's subdocument schema in the Thought model.
-
-  * Uses functionality to format queried timestamps properly.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to a walkthrough video.
-
-### Bonus: +10 Points
-
-* Application deletes a user's associated thoughts when the user is deleted.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+[contributors-shield]: https://img.shields.io/github/contributors/gurtej154/sociou-api.svg?style=for-the-badge
+[contributors-url]: https://github.com/gurtej154/sociou-api/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/gurtej154/sociou-api.svg?style=for-the-badge
+[forks-url]: https://github.com/gurtej154/sociou-api/network/members
+[stars-shield]: https://img.shields.io/github/stars/gurtej154/sociou-api.svg?style=for-the-badge
+[stars-url]: https://github.com/gurtej154/sociou-api/stargazers
+[issues-shield]: https://img.shields.io/github/issues/gurtej154/sociou-api.svg?style=for-the-badge
+[issues-url]: https://github.com/gurtej154/sociou-api/issues
+[license-shield]: https://img.shields.io/github/license/gurtej154/sociou-api.svg?style=for-the-badge
+[license-url]: https://github.com/gurtej154/sociou-api/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/gurtej-singh-336621224/
+[product-screenshot]: images/screenshot.png
