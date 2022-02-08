@@ -30,19 +30,19 @@
     <img src="/assets/README-Logo.gif" alt="Logo" width="100" height="100">
   </a>
 
-<h3 align="center">Web Developer Portfolio</h3>
+<h3 align="center">Sociou API Network</h3>
 
   <p align="center">
     Showcases the authors completed projects, experiences, skills and contact details.
     <br />
-    <a href="https://github.com/gurtej154/Web-Developer-Portfolio"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/gurtej154/sociou-api"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://gurtej-singh-web-portfolio.herokuapp.com/">View Demo</a>
+    <a href="https://drive.google.com/file/d/1l26-nGkKGElZCFa3VQp7t7ETBDzUk_nx/view">View Demo</a>
     ·
-    <a href="https://github.com/gurtej154/Web-Developer-Portfolio/issues">Report Bug</a>
+    <a href="https://github.com/gurtej154/sociou-api/issues">Report Bug</a>
     ·
-    <a href="https://github.com/gurtej154/Web-Developer-Portfolio/issues">Request Feature</a>
+    <a href="https://github.com/gurtej154/sociou-api/issues">Request Feature</a>
   </p>
 </div>
 
@@ -53,6 +53,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+       <li><a href="#mock-up">Built With</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -75,6 +76,8 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+
+As a Developer of a social networking site, I would like to be able to view, add and remove friends, thoughts and reactions in the newsfeed section. This project demonstrates how the API routes work and function within insomina.
 
 ## Mock Up
 
